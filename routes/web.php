@@ -17,4 +17,9 @@ Route::get('/', function () {
     return redirect()->route('books.index');
 });
 
-Route::resource('/books', 'BooksController');
+Route::resource('/books', 'BooksController')
+    ->except([
+        'create',
+        'show',
+        'edit',
+    ]);

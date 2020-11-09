@@ -46,6 +46,7 @@
   <form action="{{ route('books.update', $book->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('put')
+    
     <div class="md-form mb-2">
       <input type="text" id="orangeForm-name" class="form-control validate" name="title" placeholder="Title" value="{{ $book->title }}">
     </div>

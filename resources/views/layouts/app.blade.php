@@ -35,7 +35,7 @@
 
             @component('components.modal')
             @slot('modalId', 'new')
-            @slot('header', $book->title)
+            @slot('header', 'Create New Book')
 
             <form action="{{ route('books.store') }}" method="post" enctype="multipart/form-data">
               @csrf

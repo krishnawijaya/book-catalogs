@@ -57,11 +57,12 @@ class BooksController extends Controller
      * @param  \App\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Books $books)
+    public function update(Request $request, $books)
     {
-        $books->title = $request->title;
-        $books->author = $request->author;
-        $books->pages = $request->pages;
+        $book = Books::findOrFail($books);
+        $book->title = $request->title;
+        $book->author = $request->author;
+        $book->pages = $request->pages;
 
         if ( $request->hasFile( 'image' ) &&
             $request->file( 'image' )->isValid()
@@ -72,12 +73,12 @@ class BooksController extends Controller
             $path = $request->file( 'image' )
                             ->storeAs( 'uploads/' . date( 'Y' ) . '/' . date( 'm' ), $name, 'public' );
             
-            if ($books->image != '/storage/' . $path) {
-                $books->image = '/storage/' . $path;
+            if ($book->image != '/storage/' . $path) {
+                $book->image = '/storage/' . $path;
             }
         }
 
-        $books->save();
+        $book->save();
         return redirect()->route('books.index');
     }
 
@@ -87,9 +88,10 @@ class BooksController extends Controller
      * @param  \App\Books  $books
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Books $books)
+    public function destroy($books)
     {
-        $books->delete();
+        $book = Books::findOrFail($books);
+        $book->delete();
         return redirect()->route('books.index');
     }
 }
