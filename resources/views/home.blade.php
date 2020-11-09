@@ -9,13 +9,13 @@
       <h5 class="mt-2 ml-2">{{ $book->title }}</h5>
     </div>
     <div class="button-wrapper">
-      <button type="button" class="btn btn-outline-success btn-md" data-toggle="modal" data-target="{{ '#view' . $book->id }}">
+      <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="{{ '#view' . $book->id }}">
         View
       </button>
-      <button type="button" class="btn btn-outline-primary btn-md" data-toggle="modal" data-target="{{ '#edit' . $book->id }}">
+      <button type="button" class="btn btn-primary btn-md" data-toggle="modal" data-target="{{ '#edit' . $book->id }}">
         Edit
       </button>
-      <button type="button" class="btn btn-outline-danger btn-md" data-toggle="modal" data-target="{{ '#delete' . $book->id }}">
+      <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="{{ '#delete' . $book->id }}">
         Delete
       </button>
     </div>
